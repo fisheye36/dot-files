@@ -1,0 +1,19 @@
+[user]
+	email = kamil.warchol.93@gmail.com
+	name = Kamil Warchoł
+[alias]
+    co = checkout
+    master = checkout master
+    discard = checkout --
+    unstage = reset HEAD
+    amend = commit --amend
+    amendv = commit -v --amend
+    st = status
+    s = status -s
+    pop = stash pop --index
+    lg = log --oneline --graph --decorate
+    lga = log --oneline --graph --decorate --all
+    df = diff --cached
+[core]
+	editor = vim
+	autocrlf = input
