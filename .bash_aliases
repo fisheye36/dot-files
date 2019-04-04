@@ -101,6 +101,7 @@ _LATEST_PROJ=`ls -t $_PROJECT_DIR | head -1`
 alias root="cd /"
 alias ..="cd .."
 alias proj="cd $_PROJECT_DIR"
+alias dot="cd $_PROJECT_DIR/dot-files"
 alias lpj="cd $_PROJECT_DIR/$_LATEST_PROJ"
 alias lproj=lpj
 alias docs="cd ~/Documents"

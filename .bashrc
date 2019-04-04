@@ -115,13 +115,7 @@ fi
 # CUSTOM CONTENT GENERALLY STARTS HERE
 ######################################
 
-# run startup script
-STARTUP_SCRIPT_PATH=~/scripts/startup.sh
-if [ -f $STARTUP_SCRIPT_PATH ]; then
-    . $STARTUP_SCRIPT_PATH;
-fi
-
-# enable git prompt
+# enable git prompt (https://github.com/magicmonty/bash-git-prompt.git)
 if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then
   # Set config variables first
   GIT_PROMPT_ONLY_IN_REPO=1
@@ -152,3 +146,10 @@ echo
 echo "TODO:"
 cat $HOME/.todo
 echo
+
+# run startup script
+STARTUP_SCRIPT_PATH=~/scripts/startup.sh
+if [ -f $STARTUP_SCRIPT_PATH ]; then
+    . $STARTUP_SCRIPT_PATH;
+fi
+
