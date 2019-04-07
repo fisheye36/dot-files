@@ -144,7 +144,7 @@ fi
 echo "Hello, have a nice and productive day!"
 echo
 echo "TODO:"
-cat $HOME/.todo
+cat ~/.todo
 echo
 
 # run startup script
@@ -152,4 +152,3 @@ STARTUP_SCRIPT_PATH=~/scripts/startup.sh
 if [ -f $STARTUP_SCRIPT_PATH ]; then
     . $STARTUP_SCRIPT_PATH;
 fi
-
