@@ -122,13 +122,3 @@ alias gui="nautilus . &"
 alias aliases="less ~/.bash_aliases"
 alias v="vim"
 alias learn="evince ~/Documents/books/Mark\ Lutz\ -\ Learning\ Python.pdf &"
-
-function _print_repo_status {
-    if [[ "`git status`" == *"working tree clean"* ]]; then
-        echo "repository clean";
-    else
-        echo "repository dirty";
-    fi
-}
-
-alias repo=_print_repo_status
