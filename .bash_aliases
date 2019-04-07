@@ -96,13 +96,18 @@ alias deb="sudo deborphan"
 ############
 
 _PROJECT_DIR=~/projects
-_LATEST_PROJ=`ls -t $_PROJECT_DIR | head -1`
 
 alias root="cd /"
 alias ..="cd .."
 alias proj="cd $_PROJECT_DIR"
 alias dot="cd $_PROJECT_DIR/dot-files"
-alias lpj="cd $_PROJECT_DIR/$_LATEST_PROJ"
+
+function _go_to_latest_project {
+    local LATEST_PROJ=`ls -t $_PROJECT_DIR | head -1`
+    cd $_PROJECT_DIR/$LATEST_PROJ
+}
+
+alias lpj=_go_to_latest_project
 alias lproj=lpj
 alias docs="cd ~/Documents"
 alias dl="cd ~/Downloads"
