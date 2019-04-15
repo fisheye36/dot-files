@@ -80,6 +80,7 @@ alias edal="vim ~/.bash_aliases; . ~/.bash_aliases; echo .bash_aliases updated"
 alias edgit="git config --global -e; echo .gitconfig updated"
 alias todo="vim ~/.todo; echo TODO list updated"
 alias scr="vim ~/scripts/startup.sh; echo startup.sh script updated"
+alias rel=". ~/.bashrc"
 
 ##################
 # packages aliases
@@ -112,13 +113,21 @@ alias lproj=lpj
 alias docs="cd ~/Documents"
 alias dl="cd ~/Downloads"
 
+################
+# output aliases
+################
+
+alias igrep="grep -i"
+alias proc="ps aux | head -1; echo; ps aux | grep -i" # <process name regex>
+alias hist="history | tail"
+alias gui="nautilus . &"
+
 #######################
 # misc commands aliases
 #######################
 
+
 alias png="ping www.onet.pl"
-alias hist="history | tail"
-alias gui="nautilus . &"
 alias aliases="less ~/.bash_aliases"
 alias v="vim"
 alias learn="evince ~/Documents/books/Mark\ Lutz\ -\ Learning\ Python.pdf &"
