@@ -126,8 +126,8 @@ alias gui="nautilus . &"
 # misc commands aliases
 #######################
 
-
 alias png="ping www.onet.pl"
 alias aliases="less ~/.bash_aliases"
-alias v="vim"
 alias learn="evince ~/Documents/books/Mark\ Lutz\ -\ Learning\ Python.pdf &"
+alias v="vim"
+alias y="chromium www.youtube.com &"
