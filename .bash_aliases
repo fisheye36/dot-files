@@ -119,6 +119,16 @@ alias dl="cd ~/Downloads"
 
 alias igrep="grep -i"
 alias proc="ps aux | head -1; echo; ps aux | grep -i" # <process name regex>
+
+function _find_everywhere {
+    if [ $# -ge 1 ]; then
+        find / -name "*$1" 2> /dev/null
+    else
+        echo "No filename pattern specified"
+    fi
+}
+
+alias fnd=_find_everywhere
 alias hist="history | tail"
 alias gui="nautilus . &"
 
