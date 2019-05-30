@@ -3,10 +3,10 @@ cp -r ~/.bashrc ~/.bash_aliases ~/.gitconfig ~/.vimrc ~/.ideavimrc ~/scripts/ ~/
 
 cd "${_DOT_FILES_REPO_PATH}"
 _MESSAGE_HEADER="repository $(dirs):"
-if [[ "$(git status)" == *"added to commit"* ]]; then
-    echo -e "${_MESSAGE_HEADER} ${_LIGHT_RED_BG}${_BLACK}dirty${_RESET_ALL}";
-else
+if [[ "$(git status)" == *"nothing to commit"* ]]; then
     echo -e "${_MESSAGE_HEADER} ${_GREEN_BG}${_BLACK}clean${_RESET_ALL}";
+else
+    echo -e "${_MESSAGE_HEADER} ${_LIGHT_RED_BG}${_BLACK}dirty${_RESET_ALL}";
 fi
 echo
 cd "${OLDPWD}"
