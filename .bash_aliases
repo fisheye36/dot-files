@@ -36,7 +36,19 @@ alias val="valgrind --leak-check=full --show-leak-kinds=all"
 # python aliases
 ################
 
+alias p="python"
 alias p3="python3"
+
+function _activate_virtualenv {
+    local ENV_SCRIPT=$(find -path "*env/bin/activate" | grep "^\.\/[^/]*env\/bin\/activate")
+    if [ -f "${ENV_SCRIPT}" ]; then
+        . "${ENV_SCRIPT}"
+    else
+        echo -e "${_LIGHT_RED}no virtual environment in $(dirs)${_RESET_ALL}"
+    fi
+}
+
+alias activate=_activate_virtualenv
 
 ############
 # ls aliases
