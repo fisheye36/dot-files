@@ -96,6 +96,8 @@ alias edal="vim ~/.bash_aliases; . ~/.bash_aliases; _notify_updated .bash_aliase
 alias edgit="git config --global -e; _notify_updated .gitconfig"
 alias todo="vim ~/.todo; _notify_updated .todo"
 alias scr="vim ~/scripts/startup.sh; _notify_updated scripts/startup.sh"
+alias colors="vim ~/scripts/colors.sh; _notify_updated scripts/colors.sh"
+
 alias rel=". ~/.bashrc"
 
 ##################
