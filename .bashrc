@@ -147,14 +147,14 @@ if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then
 fi
 
 # greeting
-echo "Hello, have a nice and productive day!"
+echo -e "${_BOLD}${_YELLOW}Hello, have a nice and productive day!${_RESET_ALL}"
 echo
-echo "TODO:"
+echo -e "${_UNDERLINE}${_LIGHT_BLUE}TODO${_RESET_ALL}:"
 cat ~/.todo
 echo
 
 # run startup script
-STARTUP_SCRIPT_PATH=~/scripts/startup.sh
-if [ -f $STARTUP_SCRIPT_PATH ]; then
-    . $STARTUP_SCRIPT_PATH;
+_STARTUP_SCRIPT_PATH=~/scripts/startup.sh
+if [ -f "${_STARTUP_SCRIPT_PATH}" ]; then
+    . "${_STARTUP_SCRIPT_PATH}"
 fi

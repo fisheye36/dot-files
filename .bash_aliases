@@ -2,25 +2,25 @@
 # system shutdown/reboot
 ########################
 
-_GOODBYE_MSG=Goodbye!
+_GOODBYE_MSG="${_BOLD}${_YELLOW}Goodbye!${_RESET_ALL}"
 _DELAY=1
 
-alias off="echo $_GOODBYE_MSG; sleep $_DELAY; shutdown now"
-alias res="echo $_GOODBYE_MSG; sleep $_DELAY; reboot"
+alias off="echo -e \"${_GOODBYE_MSG}\"; sleep ${_DELAY}; shutdown now"
+alias res="echo -e \"${_GOODBYE_MSG}\"; sleep ${_DELAY}; reboot"
 
 #############
 # ssh aliases
 #############
 
-_T_USER=6warchol
-_T_HOST=taurus.fis.agh.edu.pl
-_T_PASCAL=pascal.fis.agh.edu.pl
+_USER=6warchol
+_TAURUS=taurus.fis.agh.edu.pl
+_PASCAL=pascal.fis.agh.edu.pl
 
-alias taurus="ssh $_T_USER\@$_T_HOST"
-alias xtaurus="ssh -X $_T_USER\@$_T_HOST"
-alias ptaurus="ssh -D8527 $_T_USER\@_$T_HOST"
-alias pascal="ssh $_T_USER\@$_T_PASCAL"
-alias ppascal="ssh -D8527 $_T_USER\@$_T_PASCAL"
+alias taurus="ssh ${_USER}\@${_TAURUS}"
+alias xtaurus="ssh -X ${_USER}\@${_TAURUS}"
+alias ptaurus="ssh -D8527 ${_USER}\@_${TAURUS}"
+alias pascal="ssh ${_USER}\@${_PASCAL}"
+alias ppascal="ssh -D8527 ${_USER}\@${_PASCAL}"
 
 #############
 # cpp aliases
@@ -60,12 +60,16 @@ alias gst="git status"
 alias gmaster="git checkout master"
 alias gorigin="git remote show origin"
 
+function _notify_updated {
+    [ ${#} -ge 1 ] && echo -e "${_BOLD}${1}${_RESET_ALL} ${_YELLOW}updated${_RESET_ALL}"
+}
+
 function _edit_gitignore {
     if [ -f .gitignore ]; then
-        vim .gitignore;
-        echo ".gitignore updated";
+        vim .gitignore
+        _notify_updated .gitignore
     else
-        echo "no .gitignore in `dirs`"
+        echo -e "${_LIGHT_RED}no .gitignore in $(dirs)${_RESET_ALL}"
     fi
 }
 
@@ -75,11 +79,11 @@ alias ignore=_edit_gitignore
 # configuration aliases
 #######################
 
-alias edrc="vim ~/.bashrc; . ~/.bashrc; echo .bashrc updated"
-alias edal="vim ~/.bash_aliases; . ~/.bash_aliases; echo .bash_aliases updated"
-alias edgit="git config --global -e; echo .gitconfig updated"
-alias todo="vim ~/.todo; echo TODO list updated"
-alias scr="vim ~/scripts/startup.sh; echo startup.sh script updated"
+alias edrc="vim ~/.bashrc; . ~/.bashrc; _notify_updated .bashrc"
+alias edal="vim ~/.bash_aliases; . ~/.bash_aliases; _notify_updated .bash_aliases"
+alias edgit="git config --global -e; _notify_updated .gitconfig"
+alias todo="vim ~/.todo; _notify_updated .todo"
+alias scr="vim ~/scripts/startup.sh; _notify_updated scripts/startup.sh"
 alias rel=". ~/.bashrc"
 
 ##################
@@ -100,12 +104,12 @@ _PROJECT_DIR=~/projects
 
 alias root="cd /"
 alias ..="cd .."
-alias proj="cd $_PROJECT_DIR"
-alias dot="cd $_PROJECT_DIR/dot-files"
+alias proj="cd ${_PROJECT_DIR}"
+alias dot="cd ${_PROJECT_DIR}/dot-files"
 
 function _go_to_latest_project {
-    local LATEST_PROJ=`ls -t $_PROJECT_DIR | head -1`
-    cd $_PROJECT_DIR/$LATEST_PROJ
+    local LATEST_PROJ=$(ls -t ${_PROJECT_DIR} | head -1)
+    cd "${_PROJECT_DIR}/${LATEST_PROJ}"
 }
 
 alias lpj=_go_to_latest_project
@@ -121,10 +125,10 @@ alias igrep="grep -i"
 alias proc="ps aux | head -1; echo; ps aux | grep -i" # <process name regex>
 
 function _find_everywhere {
-    if [ $# -ge 1 ]; then
-        find / -name "*$1" 2> /dev/null
+    if [ ${#} -ge 1 ]; then
+        find / -name "*${1}" 2> /dev/null
     else
-        echo "No filename pattern specified"
+        echo -e "${_RED}No filename pattern specified${_RESET_ALL}"
     fi
 }
 
