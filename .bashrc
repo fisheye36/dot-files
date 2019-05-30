@@ -2,6 +2,12 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# run script exporting terminal colors
+_COLORS_SCRIPT_PATH=~/scripts/colors.sh
+if [ -f "${_COLORS_SCRIPT_PATH}" ]; then
+    . "${_COLORS_SCRIPT_PATH}"
+fi
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
