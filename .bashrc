@@ -158,3 +158,9 @@ _STARTUP_SCRIPT_PATH=~/scripts/startup.sh
 if [ -f "${_STARTUP_SCRIPT_PATH}" ]; then
     . "${_STARTUP_SCRIPT_PATH}"
 fi
+
+# load local, workspace specific configuration
+_LOCAL_CONFIGURATION=~/.local_configuration.sh
+if [ -f "${_LOCAL_CONFIGURATION}" ]; then
+    . "${_LOCAL_CONFIGURATION}"
+fi
