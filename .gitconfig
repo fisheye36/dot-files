@@ -4,7 +4,7 @@
 [alias]
     co = checkout
     master = checkout master
-    ff = merge origin/HEAD --ff-only
+    ff = merge @{u} --ff-only
     discard = checkout --
     unstage = reset HEAD
     amend = commit --amend
