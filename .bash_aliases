@@ -1,3 +1,5 @@
+unalias -a
+
 ########################
 # system shutdown/reboot
 ########################
@@ -26,137 +28,148 @@ alias ppascal="ssh -D8527 ${_USER}\@${_PASCAL}"
 # cpp aliases
 #############
 
-alias cpp3="g++ -std=c++03 -Wall -Wextra -pedantic"
-alias cpp11="g++ -std=c++11 -Wall -Wextra -pedantic"
-alias cpp14="g++ -std=c++14 -Wall -Wextra -pedantic"
-alias cpp17="g++ -std=c++17 -Wall -Wextra -pedantic"
-alias val="valgrind --leak-check=full --show-leak-kinds=all"
+alias cpp3='g++ -std=c++03 -Wall -Wextra -pedantic'
+alias cpp11='g++ -std=c++11 -Wall -Wextra -pedantic'
+alias cpp14='g++ -std=c++14 -Wall -Wextra -pedantic'
+alias cpp17='g++ -std=c++17 -Wall -Wextra -pedantic'
+alias val='valgrind --leak-check=full --show-leak-kinds=all'
 
 ################
 # python aliases
 ################
 
-alias p="python"
-alias p3="python3"
+alias p='python'
+alias p3='python3'
 
-function _activate_virtualenv {
-    local ENV_SCRIPT=$(find -path "*env/bin/activate" | grep "^\.\/[^/]*env\/bin\/activate")
-    if [ -f "${ENV_SCRIPT}" ]; then
-        . "${ENV_SCRIPT}"
+function activate_venv {
+    local ENV_SCRIPT=$(find . -name 'activate' | egrep '^\./[^/]*env/(?:bin|Scripts)/activate')
+    if [ -r "$ENV_SCRIPT" ]; then
+        . "$ENV_SCRIPT"
     else
         echo -e "${_LIGHT_RED}no virtual environment in $(dirs)${_RESET_ALL}"
     fi
 }
 
-alias activate=_activate_virtualenv
-
 ############
 # ls aliases
 ############
 
-alias ll="ls -lhF"
-alias la="ls -AhF"
-alias lla="ls -lAhF"
+alias ll='ls -lhF'
+alias la='ls -AhF'
+alias lla='ls -lAhF'
 
 #############
 # git aliases
 #############
 
-alias gol="git lga"
-alias gol10="git lg -10"
-alias gol20="git lg -20"
-alias gadd="git add"
-alias gcom="git commit"
-alias gcomv="git commit -v"
-alias gst="git status"
-alias gmaster="git checkout master"
-alias gorigin="git remote show origin"
+alias gol='git lga'
+alias gol10='git lg -10'
+alias gol20='git lg -20'
+alias gadd='git add'
+alias gcom='git commit'
+alias gcomv='git commit -v'
+alias gst='git status'
+alias gmaster='git checkout master'
+alias gorigin='git remote show origin'
 
-function _notify_updated {
-    [ ${#} -ge 1 ] && echo -e "${_BOLD}${1}${_RESET_ALL} ${_YELLOW}updated${_RESET_ALL}"
-}
-
-function _edit_gitignore {
-    if [ -f .gitignore ]; then
-        vim .gitignore
-        _notify_updated .gitignore
+function ignore {
+    if [ -r .gitignore ]; then
+        edit_config_file .gitignore
     else
         echo -e "${_LIGHT_RED}no .gitignore in $(dirs)${_RESET_ALL}"
     fi
 }
 
-alias ignore=_edit_gitignore
+##############
+# tmux aliases
+##############
+
+alias newdev="tmux new -s dev \; source-file ~/.tmux/dev"
+alias newsplit="tmux new -s split \; source-file ~/.tmux/split"
+alias dev="tmux attach -t dev"
+alias split="tmux attach -t split"
 
 #######################
 # configuration aliases
 #######################
 
-alias edrc="vim ~/.bashrc; . ~/.bashrc; _notify_updated .bashrc"
-alias edal="vim ~/.bash_aliases; . ~/.bash_aliases; _notify_updated .bash_aliases"
-alias edgit="git config --global -e; _notify_updated .gitconfig"
-alias todo="vim ~/.todo; _notify_updated .todo"
-alias scr="vim ~/scripts/startup.sh; _notify_updated scripts/startup.sh"
-alias colors="vim ~/scripts/colors.sh; . ~/scripts/colors.sh; _notify_updated scripts/colors.sh"
+alias edlist='edit_config_file ~/.dotfile_list -n'
+alias edrc='edit_config_file ~/.bashrc'
+alias edcol='edit_config_file ~/.bash_colors.sh'
+alias edcon='edit_config_file ~/.bash_constants.sh'
+alias edfun='edit_config_file ~/.bash_functions.sh'
+alias edal='edit_config_file  ~/.bash_aliases'
+alias edgit='edit_config_file ~/.gitconfig -n'
+alias todo='edit_config_file ~/.todo -n'
 
-alias rel=". ~/.bashrc"
+alias rel='. ~/.bashrc'
 
-##################
-# packages aliases
-##################
+#################
+# package aliases
+#################
 
-alias updt="sudo apt update"
-alias upgr="sudo apt upgrade"
-alias armv="sudo apt autoremove"
-alias updtbl="apt list --upgradeable"
-alias deb="sudo deborphan"
+alias updt='sudo apt update'
+alias upgr='sudo apt upgrade'
+alias armv='sudo apt autoremove'
+alias updtbl='apt list --upgradeable'
+alias deb='sudo deborphan'
 
 ############
 # cd aliases
 ############
 
-_PROJECT_DIR=~/projects
+alias root='cd /'
+alias ..='cd ..'
+alias proj="cd $_PROJECT_DIR"
+alias dot="cd $_DOT_FILES_REPO_PATH"
 
-alias root="cd /"
-alias ..="cd .."
-alias proj="cd ${_PROJECT_DIR}"
-alias dot="cd ${_PROJECT_DIR}/dot-files"
-
-function _go_to_latest_project {
-    local LATEST_PROJ=$(ls -t ${_PROJECT_DIR} | head -1)
+function go_to_latest_project {
+    local LATEST_PROJ=$(ls -t "$_PROJECT_DIR" | head -1)
     cd "${_PROJECT_DIR}/${LATEST_PROJ}"
 }
 
-alias lpj=_go_to_latest_project
-alias lproj=lpj
-alias docs="cd ~/Documents"
-alias dl="cd ~/Downloads"
+alias lpj=go_to_latest_project
+alias lproj=go_to_latest_project
+alias docs='cd ~/Documents'
+alias dl='cd ~/Downloads'
 
 ################
 # output aliases
 ################
 
-alias igrep="grep -i"
-alias proc="ps aux | head -1; echo; ps aux | grep -i" # <process name regex>
+alias igrep='grep -i'
 
-function _find_everywhere {
-    if [ ${#} -ge 1 ]; then
-        find / -name "*${1}" 2> /dev/null
+function find_process_by_name {
+    if [ $# -ge 1 ]; then
+        local PROCESSES=$(ps aux)
+        echo "$PROCESSES" | head -1
+        echo "$PROCESSES" | grep -i "$1"
+    else
+        echo -e "${_RED}No process name specified${_RESET_ALL}"
+    fi
+}
+
+alias proc=find_process_by_name
+
+function find_everywhere {
+    if [ $# -ge 1 ]; then
+        find / -name "*$1" 2> /dev/null
     else
         echo -e "${_RED}No filename pattern specified${_RESET_ALL}"
     fi
 }
 
-alias fnd=_find_everywhere
+alias fnd=find_everywhere
 alias hist="history | tail"
 alias gui="nautilus . &"
 
-#######################
-# misc commands aliases
-#######################
+######################
+# misc command aliases
+######################
 
-alias png="ping www.onet.pl"
-alias aliases="less ~/.bash_aliases"
-alias learn="evince ~/Documents/books/Mark\ Lutz\ -\ Learning\ Python.pdf &"
-alias v="vim"
-alias g="chromium &"
-alias y="chromium www.youtube.com &"
+alias png='ping www.onet.pl'
+alias aliases='less ~/.bash_aliases'
+alias learn='evince ~/Documents/books/Mark Lutz - Learning Python.pdf &'
+alias v='vim'
+alias g='chromium &'
+alias y='chromium www.youtube.com &'

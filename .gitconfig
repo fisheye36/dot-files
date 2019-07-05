@@ -1,6 +1,6 @@
 [user]
-	email = kamil.warchol.93@gmail.com
-	name = Kamil Warchoł
+    email = kamil.warchol@nokia.com
+    name = Kamil Warchoł
 [alias]
     co = checkout
     master = checkout master
@@ -16,5 +16,6 @@
     lga = log --oneline --graph --decorate --all
     df = diff --cached
 [core]
-	editor = vim
-	autocrlf = input
+    editor = vim
+    autocrlf = input
+    symlinks = true

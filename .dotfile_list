@@ -1,0 +1,10 @@
+.dotfile_list
+.profile
+.bashrc
+.bash_colors.sh
+.bash_functions.sh
+.bash_aliases
+.gitconfig
+.tmux.conf
+.tmux/
+.vimrc
