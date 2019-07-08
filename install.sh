@@ -37,6 +37,7 @@ function copy_dotfiles_from_repo {
     for BLOB in $(cat .dotfile_list); do
         local FILE_TYPE='File'
         local CP='cp'
+        local SKIP=false
 
         if [ -d "$BLOB" ]; then
             FILE_TYPE='Directory'
@@ -57,12 +58,13 @@ function copy_dotfiles_from_repo {
                         ;;
                     *)
                         SKIP=true
-                        echo -e "Skipping ${_RED}${BLOB}${_RESET_ALL}"
                 esac
             fi
         fi
 
-        if ! $SKIP; then
+        if $SKIP; then
+            echo -e "Skipping ${_RED}${BLOB}${_RESET_ALL}"
+        else
             $CP "$BLOB" ~
             echo -e "Copied ${_GREEN}${BLOB}${_RESET_ALL}"
             COPIED_FILES=$((COPIED_FILES + 1))
