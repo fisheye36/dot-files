@@ -86,8 +86,10 @@ function ignore {
 
 alias newdev="tmux new -s dev \; source-file ~/.tmux/dev"
 alias newsplit="tmux new -s split \; source-file ~/.tmux/split"
+alias newsbs="tmux new -s side-by-side \; source-file ~/.tmux/sbs"
 alias dev="tmux attach -t dev"
 alias split="tmux attach -t split"
+alias sbs="tmux attach -t side-by-side"
 
 #######################
 # configuration aliases
