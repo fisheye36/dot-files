@@ -122,6 +122,7 @@ alias deb='sudo deborphan'
 
 alias root='cd /'
 alias ..='cd ..'
+alias b='cd -'
 alias proj="cd $_PROJECT_DIR"
 alias dot="cd $_DOT_FILES_REPO_PATH"
 
