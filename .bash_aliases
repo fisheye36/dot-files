@@ -74,7 +74,7 @@ alias gorigin='git remote show origin'
 
 function ignore {
     if [ -r .gitignore ]; then
-        edit_config_file .gitignore
+        edit_config_file .gitignore -n
     else
         echo -e "${_LIGHT_RED}no .gitignore in $(dirs)${_RESET_ALL}"
     fi
