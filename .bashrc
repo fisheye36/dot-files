@@ -7,6 +7,9 @@ case $- in
       *) return;;
 esac
 
+# unalias everything
+unalias -a
+
 # don't put duplicate lines or lines starting with space in the history
 HISTCONTROL=ignoreboth
 
