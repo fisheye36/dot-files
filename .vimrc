@@ -71,6 +71,7 @@ command W w !sudo tee % > /dev/null
 " Set 8 lines to the cursor - when moving vertically using j/k
 set so=8
 set cc=121
+set cursorline
 
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en' 
@@ -159,7 +160,7 @@ endif
 set background=dark
 
 try
-    colorscheme slate
+    colorscheme desert
 catch
 endtry
 
