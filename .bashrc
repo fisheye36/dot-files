@@ -73,6 +73,13 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     [ -r ~/.dircolors ] && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+
+    # change that ugly Windows directory color
+    LS_COLORS="$LS_COLORS:ow=01;34"
+
+    # add colors for C/C++ and Python files
+    LS_COLORS="$LS_COLORS:*.c=01;31:*.cpp=01;31:*.h=01;32:*.hpp=01;32:*.py=00;36"
+
     alias ls='ls --color=auto'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
