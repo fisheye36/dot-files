@@ -39,13 +39,34 @@ alias val='valgrind --leak-check=full --show-leak-kinds=all'
 alias p='python'
 alias p3='python3'
 
-function activate_venv {
-    local ENV_SCRIPT=$(find . -name 'activate' | egrep '^\./[^/]*env/(?:bin|Scripts)/activate')
-    if [ -r "$ENV_SCRIPT" ]; then
-        . "$ENV_SCRIPT"
+function source_venv {
+    if [ -n "$1" ]; then
+        echo -e "${_GREEN}Activating${_RESET_ALL} '$1'"
+        . "$1" 2> /dev/null || echo -e "${_RED}Error when trying to activate${_RESET_ALL} '$1'"
     else
-        echo -e "${_LIGHT_RED}no virtual environment in $(dirs)${_RESET_ALL}"
+        echo -e "${_RED}No activation script specified${_RESET_ALL}"
     fi
+}
+
+function venv {
+    local VENV_SCRIPT_PATHS_FILE="$(mktemp)"
+    find -path '*/activate' -exec file {} \; > "$VENV_SCRIPT_PATHS_FILE"
+    local NUM_ENTRIES=$(wc -l "$VENV_SCRIPT_PATHS_FILE" | cut -f 1 -d ' ')
+
+    if [ $NUM_ENTRIES -eq 0 ]; then
+        echo -e "${_LIGHT_RED}No virtual environment in${_RESET_ALL} '$(dirs)'"
+    elif [ $NUM_ENTRIES -eq 1 ]; then
+        local VENV_NAME=$(cat "$VENV_SCRIPT_PATHS_FILE" | cut -f 1 -d ':')
+        source_venv "$VENV_NAME"
+    else
+        echo -e "Available virtual environments in ${_YELLOW}$(dirs)${_RESET_ALL}:"
+        nl "$VENV_SCRIPT_PATHS_FILE"
+        read -p "Which one to source [1-${NUM_ENTRIES}]? " VENV_INDEX
+        local VENV_NAME=$(nl "$VENV_SCRIPT_PATHS_FILE" | grep "\s${VENV_INDEX}\s" | cut -f 2 | cut -f 1 -d ':')
+        [ -r "$VENV_NAME" ] && source_venv "$VENV_NAME" || echo -e "${_RED}Not an activation script${_RESET_ALL}"
+    fi
+
+    [ -w "$VENV_SCRIPT_PATHS_FILE" ] && rm "$VENV_SCRIPT_PATHS_FILE"
 }
 
 ############
