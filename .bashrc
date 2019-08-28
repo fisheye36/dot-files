@@ -148,5 +148,9 @@ greet_user
 sync_to_repo
 echo_repo_status
 
+# custom settings
+
+export EDITOR=vim
+
 # load local, workspace specific configuration
 [ -r ~/.local_configuration.sh ] && . ~/.local_configuration.sh 
