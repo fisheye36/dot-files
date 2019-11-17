@@ -8,6 +8,15 @@ _DELAY=1
 alias off="echo -e \"${_GOODBYE_MSG}\"; sleep ${_DELAY}; shutdown now"
 alias res="echo -e \"${_GOODBYE_MSG}\"; sleep ${_DELAY}; reboot"
 
+function restart_to_windows {
+    local PREFIX=
+    [ $(id -u) -ne 0 ] && PREFIX='sudo '
+    ${PREFIX}grub-reboot 'Windows 10'
+    res
+}
+
+alias win=restart_to_windows
+
 #############
 # ssh aliases
 #############
