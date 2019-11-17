@@ -25,11 +25,11 @@ _USER=6warchol
 _TAURUS=taurus.fis.agh.edu.pl
 _PASCAL=pascal.fis.agh.edu.pl
 
-alias taurus="ssh ${_USER}\@${_TAURUS}"
-alias xtaurus="ssh -X ${_USER}\@${_TAURUS}"
-alias ptaurus="ssh -D8527 ${_USER}\@_${TAURUS}"
-alias pascal="ssh ${_USER}\@${_PASCAL}"
-alias ppascal="ssh -D8527 ${_USER}\@${_PASCAL}"
+alias taurus="ssh ${_USER}@${_TAURUS}"
+alias xtaurus="ssh -X ${_USER}@${_TAURUS}"
+alias ptaurus="ssh -D8527 ${_USER}@${_TAURUS}"
+alias pascal="ssh ${_USER}@${_PASCAL}"
+alias ppascal="ssh -D8527 ${_USER}@${_PASCAL}"
 
 #############
 # cpp aliases
