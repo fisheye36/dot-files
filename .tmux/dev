@@ -1,5 +1,6 @@
-selectp -t 1
-splitw -h -p 45
-selectp -t 2
-splitw -v -p 50
-selectp -t 1
+display "Development split loaded!"
+split-window -h -p 45
+select-pane -t 2
+split-window -v -p 50
+send-keys htop Enter
+select-pane -t 1

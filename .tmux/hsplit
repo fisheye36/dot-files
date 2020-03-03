@@ -1,0 +1,3 @@
+display "Horizontal (|) split loaded!"
+splitw -h -p 50
+selectp -t 1

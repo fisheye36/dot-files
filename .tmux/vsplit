@@ -1,0 +1,3 @@
+display "Vertical (=) split loaded!"
+splitw -v -p 50
+selectp -t 1
