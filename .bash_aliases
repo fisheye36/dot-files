@@ -144,7 +144,7 @@ alias edcon='edit_config_file ~/.bash_constants.sh'
 alias edfun='edit_config_file ~/.bash_functions.sh'
 alias edal='edit_config_file  ~/.bash_aliases'
 alias edgit='edit_config_file ~/.gitconfig -n'
-alias todo='edit_config_file ~/.todo -n'
+alias edtodo='edit_config_file ~/.todo -n && todo'
 
 alias rel='. ~/.bashrc'
 

@@ -1,5 +1,9 @@
 function greet_user {
     echo -e "${_BOLD}${_YELLOW}Hello, have a nice and productive day!${_RESET_ALL}"
+    todo
+}
+
+function todo {
     echo
     echo -e "${_UNDERLINE}${_LIGHT_BLUE}TODO${_RESET_ALL}:"
     [ -r ~/.todo ] && cat ~/.todo
