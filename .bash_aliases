@@ -183,6 +183,7 @@ alias dl='cd ~/Downloads'
 ################
 
 alias igrep='grep -i'
+alias usage='grep -r -C 4'
 
 function find_process_by_name {
     if [ $# -ge 1 ]; then
