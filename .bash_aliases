@@ -221,3 +221,4 @@ alias o='xdg-open'
 alias g='chromium &'
 alias y='chromium www.youtube.com &'
 alias wl='wc -l'
+alias level="echo Current shell level: ${SHLVL}"
