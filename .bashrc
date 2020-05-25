@@ -144,9 +144,13 @@ if [ -r ~/.bash-git-prompt/gitprompt.sh ]; then
   . ~/.bash-git-prompt/gitprompt.sh
 fi
 
-greet_user
-sync_to_repo
-echo_repo_status
+if [ "$SHLVL" -eq 1 ]; then
+    greet_user
+    sync_to_repo
+    echo_repo_status
+else
+    echo -e "Going deeper to level ${_YELLOW}${SHLVL}${_RESET_ALL}"
+fi
 
 # custom settings
 
