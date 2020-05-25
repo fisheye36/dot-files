@@ -199,7 +199,7 @@ alias proc=find_process_by_name
 
 function find_everywhere {
     if [ $# -ge 1 ]; then
-        find / -name "*$1" 2> /dev/null
+        find / -name "*$1*" 2> /dev/null
     else
         echo -e "${_RED}No filename pattern specified${_RESET_ALL}"
     fi
