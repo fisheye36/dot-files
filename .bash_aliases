@@ -86,19 +86,18 @@ alias ll='ls -lhF'
 alias la='ls -AhF'
 alias lla='ls -lAhF'
 
-alias ln='ls | nl'
-alias lln='ll | nl -v 0'
-alias lan='la | nl'
-alias llan='lla | nl -v 0'
+function list_dirs {
+    lla | grep ^d | nl
+}
 
 function cdn {
     if [ -z "$1" ]; then
         echo -e "Contents of ${_YELLOW}$(dirs)${_RESET_ALL}:"
-        ln
+        list_dirs
         return
     fi
 
-    local ENTRY_TO_CD_INTO=$(ln | grep "\s$1\s" | cut -f 2)
+    local ENTRY_TO_CD_INTO=$(list_dirs | grep "^\s*$1" | awk '{ print $NF }')
     [ -d "$ENTRY_TO_CD_INTO" ] && cd "$ENTRY_TO_CD_INTO" || echo -e "${_RED}Not a directory${_RESET_ALL}"
 }
 
