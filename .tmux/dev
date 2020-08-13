@@ -1,6 +1,9 @@
-display "Development split loaded!"
 split-window -h -p 45
-select-pane -t 2
-split-window -v -p 50
-send-keys htop Enter
+split-window -v
 select-pane -t 1
+
+send-keys -t 1 C-l
+send-keys -t 2 C-l
+send-keys -t 3 C-l htop Enter
+
+display "Development split loaded!"

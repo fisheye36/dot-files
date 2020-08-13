@@ -128,9 +128,11 @@ function ignore {
 ##############
 
 alias newdev="tmux new -s dev \; source-file ~/.tmux/dev"
+alias newquad="tmux new -s quad \; source-file ~/.tmux/quad"
 alias newh="tmux new -s hsplit \; source-file ~/.tmux/hsplit"
 alias newv="tmux new -s vsplit \; source-file ~/.tmux/vsplit"
 alias dev="tmux attach -t dev"
+alias quad="tmux attach -t quad"
 
 #######################
 # configuration aliases

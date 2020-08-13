@@ -1,3 +1,7 @@
+split-window -v
+select-pane -t 1
+
+send-keys -t 1 C-a
+send-keys -t 2 C-a
+
 display "Vertical (=) split loaded!"
-splitw -v -p 50
-selectp -t 1

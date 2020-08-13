@@ -1,3 +1,7 @@
+split-window -h
+select-pane -t 1
+
+send-keys -t 1 C-l
+send-keys -t 2 C-l
+
 display "Horizontal (|) split loaded!"
-splitw -h -p 50
-selectp -t 1
