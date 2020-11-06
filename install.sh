@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # This script copies dotfiles from this repository to users's HOME directory. When a file or directory already exists in
 # HOME, user is being asked whether to override it. Additionally, environment variables that may vary per system are
