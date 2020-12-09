@@ -4,6 +4,8 @@
 [alias]
     co = checkout
     master = checkout master
+    dev = checkout develop
+    br = branch --show-current
     ff = merge @{u} --ff-only
     discard = checkout --
     unstage = reset HEAD
