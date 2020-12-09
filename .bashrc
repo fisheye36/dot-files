@@ -154,6 +154,8 @@ fi
 
 # custom settings
 
+shopt -s autocd
+
 export EDITOR=vim
 
 # load local, workspace specific configuration
