@@ -65,7 +65,7 @@ function copy_dotfiles_from_repo {
         if $SKIP; then
             echo -e "Skipping ${_RED}${BLOB}${_RESET_ALL}"
         else
-            $CP "$BLOB" ~
+            $CP "$BLOB" "$HOME"
             echo -e "Copied ${_GREEN}${BLOB}${_RESET_ALL}"
             COPIED_FILES=$((COPIED_FILES + 1))
         fi
