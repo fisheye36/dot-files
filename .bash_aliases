@@ -144,6 +144,7 @@ alias edcol='edit_config_file ~/.bash_colors.sh'
 alias edcon='edit_config_file ~/.bash_constants.sh'
 alias edfun='edit_config_file ~/.bash_functions.sh'
 alias edal='edit_config_file  ~/.bash_aliases'
+alias edloc='edit_config_file  ~/.local_configuration.sh'
 alias edgit='edit_config_file ~/.gitconfig -n'
 alias edtodo='edit_config_file ~/.todo -n && todo'
 
