@@ -9,6 +9,9 @@
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
+    # include .local_configuration_login.sh if it exists (login shell initial setup)
+    [ -r "$HOME/.local_configuration_login.sh" ] && . "$HOME/.local_configuration_login.sh"
+
     # include .bashrc if it exists
     [ -r "$HOME/.bashrc" ] && . "$HOME/.bashrc"
 fi
