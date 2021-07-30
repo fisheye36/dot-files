@@ -47,6 +47,7 @@ alias val='valgrind --leak-check=full --show-leak-kinds=all'
 
 alias p='python'
 alias p3='python3'
+alias pv='pyenv version'
 
 function source_venv {
     if [ -n "$1" ]; then
