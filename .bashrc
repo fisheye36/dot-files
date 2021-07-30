@@ -155,6 +155,8 @@ fi
 # custom settings
 
 shopt -s autocd
+set -o vi
+bind -m vi-insert 'Control-l: clear-screen'
 
 export EDITOR=vim
 
