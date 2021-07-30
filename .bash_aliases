@@ -229,6 +229,7 @@ function find_everywhere {
 alias fnd=find_everywhere
 alias hist="history | tail"
 alias gui="nautilus . &"
+alias ccat="highlight --out-format=xterm256 --line-numbers"
 
 ######################
 # misc command aliases
