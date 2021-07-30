@@ -102,6 +102,25 @@ function cdn {
     [ -d "$ENTRY_TO_CD_INTO" ] && cd "$ENTRY_TO_CD_INTO" || echo -e "${_RED}Not a directory${_RESET_ALL}"
 }
 
+################
+# docker aliases
+################
+
+alias doco='docker-compose'
+alias dps='docker ps'
+
+function enter {
+    local CONTAINER_NAME="$1"
+    local CMD="${2:-bash}"
+
+    if [ -z "${CONTAINER_NAME}" ]; then
+        echo "Container name missing" >&2
+        return
+    else
+        docker exec -it "${CONTAINER_NAME}" "${CMD}"
+    fi
+}
+
 #############
 # git aliases
 #############
