@@ -17,30 +17,6 @@ function restart_to_windows {
 
 alias win=restart_to_windows
 
-#############
-# ssh aliases
-#############
-
-_USER=6warchol
-_TAURUS=taurus.fis.agh.edu.pl
-_PASCAL=pascal.fis.agh.edu.pl
-
-alias taurus="ssh ${_USER}@${_TAURUS}"
-alias xtaurus="ssh -X ${_USER}@${_TAURUS}"
-alias ptaurus="ssh -D8527 ${_USER}@${_TAURUS}"
-alias pascal="ssh ${_USER}@${_PASCAL}"
-alias ppascal="ssh -D8527 ${_USER}@${_PASCAL}"
-
-#############
-# cpp aliases
-#############
-
-alias cpp3='g++ -std=c++03 -Wall -Wextra -pedantic'
-alias cpp11='g++ -std=c++11 -Wall -Wextra -pedantic'
-alias cpp14='g++ -std=c++14 -Wall -Wextra -pedantic'
-alias cpp17='g++ -std=c++17 -Wall -Wextra -pedantic'
-alias val='valgrind --leak-check=full --show-leak-kinds=all'
-
 ################
 # python aliases
 ################
@@ -237,7 +213,6 @@ alias ccat="highlight --out-format=xterm256 --line-numbers"
 
 alias png='ping www.onet.pl'
 alias aliases='less ~/.bash_aliases'
-alias learn='evince ~/Documents/books/Mark Lutz - Learning Python.pdf &'
 alias v='vim'
 alias o='xdg-open'
 alias g='chromium &'
