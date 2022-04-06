@@ -49,7 +49,18 @@ function copy_dotfiles_from_repo {
                 echo -e "$FILE_TYPE ${_YELLOW}~/${BLOB}${_RESET_ALL} exists and is identical, skipping"
                 SKIP=true
             else
-                # blob already exists in HOME and is different, so ask the user what to do
+                # blob already exists in HOME and is different, so ask the user whether to show diff
+                echo -en "$FILE_TYPE ${_YELLOW}~/${BLOB}${_RESET_ALL} exists and differs. Show detailed diff (y/n)? "
+                read ANS
+                case "$ANS" in
+                    y|Y)
+			git diff --no-index ~/"${BLOB}" "${BLOB}"
+                        ;;
+                    *)
+                        :
+                esac
+
+                # ask the user whether to overwrite
                 echo -en "$FILE_TYPE ${_YELLOW}~/${BLOB}${_RESET_ALL} exists and differs. Overwrite (y/n)? "
                 read ANS
                 case "$ANS" in
