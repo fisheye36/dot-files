@@ -114,7 +114,6 @@ fi
 [ -r ~/.bash_colors.sh ] && . ~/.bash_colors.sh
 
 # general constants, functions and aliases
-
 [ -r ~/.bash_constants.sh ] && . ~/.bash_constants.sh
 [ -r ~/.bash_functions.sh ] && . ~/.bash_functions.sh
 [ -r ~/.bash_aliases ] && . ~/.bash_aliases
