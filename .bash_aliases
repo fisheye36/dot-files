@@ -219,3 +219,5 @@ alias g='chromium &'
 alias y='chromium www.youtube.com &'
 alias wl='wc -l'
 alias level="echo Current shell level: ${SHLVL}"
+alias t='mkdir test 2> /dev/null; cd test'
+alias et='cd ..; rm -rfI test'
