@@ -164,6 +164,7 @@ alias root='cd /'
 alias b='cd -'
 alias proj="cd $_PROJECT_DIR"
 alias dot="cd $_DOT_FILES_REPO_PATH"
+alias md=". ${HOME}/scripts/mkdir-and-cd.sh"
 
 function go_to_latest_project {
     local LATEST_PROJ=$(ls -t "$_PROJECT_DIR" | head -1)
@@ -221,3 +222,4 @@ alias wl='wc -l'
 alias level="echo Current shell level: ${SHLVL}"
 alias t='mkdir test 2> /dev/null; cd test'
 alias et='cd ..; rm -rfI test'
+alias tp='type -a'
