@@ -20,6 +20,9 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+# display history timestamps
+HISTTIMEFORMAT="[ %Y-%m-%d %T ] "
+
 # check the window size after each command and, if necessary, update the values of LINES and COLUMNS
 shopt -s checkwinsize
 
