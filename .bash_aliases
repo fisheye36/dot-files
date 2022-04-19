@@ -97,6 +97,12 @@ function enter {
     fi
 }
 
+################
+# terraform aliases
+################
+
+alias tf='terraform'
+
 #############
 # git aliases
 #############
