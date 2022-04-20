@@ -220,6 +220,7 @@ alias ccat="highlight --out-format=xterm256 --line-numbers"
 
 alias png='ping www.onet.pl'
 alias aliases='less ~/.bash_aliases'
+alias l='less'
 alias v='vim'
 alias o='xdg-open'
 alias g='chromium &'
