@@ -125,6 +125,16 @@ function ignore {
     fi
 }
 
+function gtag {
+    local version="$1"
+    if [ -z "$version" ]; then
+        echo -e "${_LIGHT_RED}version missing${_RESET_ALL}" >&2
+        return 1
+    fi
+
+    git tag -a "$version" -m "$version"
+}
+
 ##############
 # tmux aliases
 ##############
