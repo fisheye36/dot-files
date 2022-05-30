@@ -10,6 +10,9 @@ esac
 # unalias everything
 unalias -a
 
+# source script exporting terminal colors
+[ -r ~/.bash_colors.sh ] && . ~/.bash_colors.sh
+
 # don't put duplicate lines or lines starting with space in the history
 HISTCONTROL=ignoreboth
 
@@ -58,9 +61,9 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[01;33m\] @ \[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1="${_BOLD}${_RED}\${debian_chroot:+(\$debian_chroot) }${_GREEN}\u ${_YELLOW}@ ${_GREEN}\H ${_RED}\$(echo \$?) ${_BLUE}\w\n${_DEFAULT}[${_CYAN}\t${_DEFAULT}] ${_YELLOW}\$ ${_RESET_ALL}"
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u @ \h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot) }\u @ \H:\w\n[\t] \$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -112,9 +115,6 @@ fi
 ######################################
 # CUSTOM CONTENT GENERALLY STARTS HERE
 ######################################
-
-# source script exporting terminal colors
-[ -r ~/.bash_colors.sh ] && . ~/.bash_colors.sh
 
 # general constants, functions and aliases
 [ -r ~/.bash_constants.sh ] && . ~/.bash_constants.sh
