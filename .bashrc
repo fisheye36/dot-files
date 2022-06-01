@@ -61,13 +61,13 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1_FIRST_LINE="${_RESET_ALL}${_BOLD}${_RED}\${debian_chroot:+(\$debian_chroot) }${_GREEN}\u ${_YELLOW}@ ${_GREEN}\H ${_RED}\$(echo \$?) ${_BLUE}\w${_RESET_ALL}"
-    PS1_SECOND_LINE="${_RESET_ALL}${_BOLD}[${_CYAN}\t${_DEFAULT}] ${_YELLOW}\$ ${_RESET_ALL}"
+    PS1_FIRST_LINE="\[${_RESET_ALL}${_BOLD}${_RED}\]\${debian_chroot:+(\$debian_chroot) }\[${_GREEN}\]\u \[${_YELLOW}\]@ \[${_GREEN}\]\H \[${_RED}\]\$(echo \$?) \[${_BLUE}\]\w\[${_RESET_ALL}\]"
+    PS1_SECOND_LINE="\[${_RESET_ALL}${_BOLD}\][\[${_CYAN}\]\t\[${_DEFAULT}\]] \[${_YELLOW}\]\$ \[${_RESET_ALL}\]"
 else
-    PS1_FIRST_LINE='${debian_chroot:+($debian_chroot) }\u @ \H \$(echo \$?) \w'
+    PS1_FIRST_LINE='${debian_chroot:+($debian_chroot) }\u @ \H $(echo $?) \w'
     PS1_SECOND_LINE='[\t] \$ '
 fi
-PS1="${PS1_FIRST_LINE}\n${PS1_SECOND_LINE}"
+PS1="${PS1_FIRST_LINE}\\n${PS1_SECOND_LINE}"
 
 unset color_prompt force_color_prompt
 
@@ -141,7 +141,7 @@ if [ -r ~/.bash-git-prompt/gitprompt.sh ]; then
   # GIT_PROMPT_STATUS_COMMAND=gitstatus_pre-1.7.10.sh # uncomment to support Git older than 1.7.10
 
   GIT_PROMPT_START="${PS1_FIRST_LINE} (" # uncomment for custom prompt start sequence
-  GIT_PROMPT_END=" )\n${PS1_SECOND_LINE}" # uncomment for custom prompt end sequence
+  GIT_PROMPT_END=" )\\n${PS1_SECOND_LINE}" # uncomment for custom prompt end sequence
 
   # as last entry source the gitprompt script
   # GIT_PROMPT_THEME=Custom # use custom theme specified in file GIT_PROMPT_THEME_FILE (default ~/.git-prompt-colors.sh)
