@@ -7,18 +7,18 @@
 # libpam-umask package
 #umask 022
 
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .local_configuration_login.sh if it exists (login shell initial setup)
-    [ -r "$HOME/.local_configuration_login.sh" ] && . "$HOME/.local_configuration_login.sh"
-
-    # include .bashrc if it exists
-    [ -r "$HOME/.bashrc" ] && . "$HOME/.bashrc"
-fi
-
 # set PATH so it includes user's private bin if it exists
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
 [ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
 
 # set PATH so it includes user's private scripts if it exists
 [ -d "$HOME/scripts" ] && PATH="$HOME/scripts:$PATH"
+
+# include .local_configuration_login.sh if it exists (login shell initial setup)
+[ -r "$HOME/.local_configuration_login.sh" ] && . "$HOME/.local_configuration_login.sh"
+
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    [ -r "$HOME/.bashrc" ] && . "$HOME/.bashrc"
+fi
