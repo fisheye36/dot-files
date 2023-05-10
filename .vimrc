@@ -402,3 +402,11 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Filetype associations
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set the filetype based on the file's extension, but only if
+" 'filetype' has not already been set
+au BufRead,BufNewFile Jenkinsfile setfiletype groovy
