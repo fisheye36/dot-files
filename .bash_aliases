@@ -82,8 +82,12 @@ function cdn {
 # docker aliases
 ################
 
-alias doco='docker-compose'
+alias d='docker'; complete -F _docker d
+alias dc='docker compose'; complete -F _docker dc
+alias doco='docker-compose'; complete -F _docker doco
 alias dps='docker ps'
+alias dup='docker compose up'
+alias ddown='docker compose down'
 
 function enter {
     local CONTAINER_NAME="$1"
@@ -94,6 +98,18 @@ function enter {
         return
     else
         docker exec -it "${CONTAINER_NAME}" "${CMD}"
+    fi
+}
+
+function compose-enter {
+    local SERVICE_NAME="$1"
+    local CMD="${2:-bash}"
+
+    if [ -z "${SERVICE_NAME}" ]; then
+        echo "Service name missing" >&2
+        return
+    else
+        docker compose exec "${SERVICE_NAME}" "${CMD}"
     fi
 }
 
