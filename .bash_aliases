@@ -11,7 +11,7 @@ alias res="echo -e \"${_GOODBYE_MSG}\"; sleep ${_DELAY}; reboot"
 function restart_to_windows {
     local PREFIX=
     [ $(id -u) -ne 0 ] && PREFIX='sudo '
-    ${PREFIX}grub-reboot 'Windows 10'
+    ${PREFIX}grub-reboot 'Windows 11'
     res
 }
 
@@ -24,6 +24,7 @@ alias win=restart_to_windows
 alias p='python'
 alias p3='python3'
 alias pv='pyenv version'
+alias pvs='pyenv versions'
 
 function source_venv {
     if [ -n "$1" ]; then
@@ -133,6 +134,7 @@ alias gamend='git commit -v --amend'
 alias gst='git status'
 alias gmaster='git checkout master'
 alias gorigin='git remote show origin'
+alias gprune='git remote prune origin'
 
 function ignore {
     if [ -r .gitignore ]; then

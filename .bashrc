@@ -125,8 +125,20 @@ fi
 [ -r ~/.bash_functions.sh ] && . ~/.bash_functions.sh
 [ -r ~/.bash_aliases ] && . ~/.bash_aliases
 
+echo project dir is $_PROJECT_DIR
+
+# custom settings
+shopt -s autocd
+set -o vi
+bind -m vi-insert 'Control-l: clear-screen'
+
+export EDITOR=vim
+
+# load local, workspace specific configuration
+[ -r ~/.local_configuration.sh ] && . ~/.local_configuration.sh 
+
 # enable git prompt (https://github.com/magicmonty/bash-git-prompt.git)
-if [ -r ~/.bash-git-prompt/gitprompt.sh ]; then
+if [ -r "${_PROJECT_DIR}/bash-git-prompt/gitprompt.sh" ]; then
   # set config variables first
   GIT_PROMPT_ONLY_IN_REPO=1
   GIT_PROMPT_FETCH_REMOTE_STATUS=0 # uncomment to avoid fetching remote status
@@ -146,9 +158,9 @@ if [ -r ~/.bash-git-prompt/gitprompt.sh ]; then
   # as last entry source the gitprompt script
   # GIT_PROMPT_THEME=Custom # use custom theme specified in file GIT_PROMPT_THEME_FILE (default ~/.git-prompt-colors.sh)
   # GIT_PROMPT_THEME_FILE=~/.git-prompt-colors.sh
-  GIT_PROMPT_THEME=Evermeet
+  GIT_PROMPT_THEME=Evermeet-Ubuntu
 
-  . ~/.bash-git-prompt/gitprompt.sh
+  . "${_PROJECT_DIR}/bash-git-prompt/gitprompt.sh"
 fi
 
 if [ "$SHLVL" -eq 1 ]; then
@@ -158,14 +170,3 @@ if [ "$SHLVL" -eq 1 ]; then
 else
     echo -e "Going deeper to level ${_YELLOW}${SHLVL}${_RESET_ALL}"
 fi
-
-# custom settings
-
-shopt -s autocd
-set -o vi
-bind -m vi-insert 'Control-l: clear-screen'
-
-export EDITOR=vim
-
-# load local, workspace specific configuration
-[ -r ~/.local_configuration.sh ] && . ~/.local_configuration.sh 
