@@ -25,6 +25,7 @@ alias p='python'
 alias p3='python3'
 alias pv='pyenv version'
 alias pvs='pyenv versions'
+alias psh='poetry shell'
 
 function source_venv {
     if [ -n "$1" ]; then
@@ -124,6 +125,7 @@ alias tf='terraform'
 # git aliases
 #############
 
+alias gs='git status'
 alias gol='git lga'
 alias gol10='git lg -10'
 alias gol20='git lg -20'
