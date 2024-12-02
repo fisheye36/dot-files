@@ -22,3 +22,9 @@ if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     [ -r "$HOME/.bashrc" ] && . "$HOME/.bashrc"
 fi
+
+# SSH agent setup
+if test "$PS1"; then
+    eval $(ssh-agent)
+    find "$HOME/.ssh" -name "*rsa" -exec ssh-add '{}' \;
+fi
