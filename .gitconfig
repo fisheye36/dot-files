@@ -6,6 +6,8 @@
     master = checkout master
     dev = checkout develop
     br = branch --show-current
+    p = pull --prune
+    f = fetch --prune
     ff = merge @{u} --ff-only
     discard = checkout --
     unstage = reset HEAD
@@ -21,3 +23,5 @@
     editor = vim
     autocrlf = input
     symlinks = true
+[init]
+    defaultBranch = main
