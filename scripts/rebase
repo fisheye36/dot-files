@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -e
+
+main() {
+    init_script_variables
+    update_main_branch
+    rebase_current_branch_onto_new_main
+}
+
+init_script_variables() {
+    CURRENT_BRANCH=$(git symbolic-ref --short HEAD)
+    if [ "$CURRENT_BRANCH" == main ]; then
+        echo "On main branch, exiting"
+        exit 0
+    fi
+
+    if ! git diff-index --quiet HEAD; then
+        IS_STASH_NEEDED=yes
+    fi
+}
+
+update_main_branch() {
+    git fetch --prune
+    [ -n "$IS_STASH_NEEDED" ] && git stash push -m "temp-stash-for-rebase"
+    git switch main
+    git merge origin/main --ff-only
+}
+
+rebase_current_branch_onto_new_main() {
+    git switch "$CURRENT_BRANCH"
+    git rebase main
+    [ -n "$IS_STASH_NEEDED" ] && git stash pop
+}
+
+main
