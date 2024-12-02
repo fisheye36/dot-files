@@ -26,6 +26,8 @@ alias p3='python3'
 alias pv='pyenv version'
 alias pvs='pyenv versions'
 alias psh='poetry shell'
+alias pc='pre-commit'
+alias pca='pre-commit run --all'
 
 function source_venv {
     if [ -n "$1" ]; then
