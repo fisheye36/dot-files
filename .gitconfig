@@ -8,6 +8,7 @@
     br = branch --show-current
     p = pull --prune
     f = fetch --prune
+    pf = push --force
     ff = merge @{u} --ff-only
     discard = checkout --
     unstage = reset HEAD
@@ -25,3 +26,5 @@
     symlinks = true
 [init]
     defaultBranch = main
+[push]
+    autoSetupRemote = true
